@@ -8,9 +8,15 @@ if ("serviceWorker" in navigator) {
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
-    cache.addAll(['/']);
+    caches.open("pwa-assets")
+    .then(cache => {
+      cache.addAll(['/',"styles.css", "icon512.png.png"]); 
+    });
   })());
+
+
 });
+
 
 self.addEventListener('fetch', event => {
   event.respondWith((async () => {
@@ -34,3 +40,4 @@ self.addEventListener('fetch', event => {
     }
   })());
 });
+
