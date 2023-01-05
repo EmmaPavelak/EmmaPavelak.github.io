@@ -1,9 +1,5 @@
 const CACHE_NAME = `my-sample-app-cache-v1`;
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js", { scope: "/" });
-}
-
 // Use the install event to pre-cache all initial resources.
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
