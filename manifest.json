@@ -5,7 +5,7 @@
     "description": "A sample PWA for testing purposes",
     "start_url": "/",
     "background_color": "#5ad79c",
-    "theme_color": "#5ad79c",
+    "theme_color": "#ff0000",
     "orientation": "any",
     "display": "standalone",
     "icons": [
