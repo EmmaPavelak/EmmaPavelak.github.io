@@ -11,10 +11,36 @@
   </head>
   <body class="unselectable">
     <h1>La PWA Vanilla</h1>
+    <div id="status">En ligne</div>
   </body>
+
   <script>
+    // Register a service worker to listen for network events
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/sw.js", { scope: "/" });
+      window.addEventListener("load", function () {
+        navigator.serviceWorker
+          .register("/sw.js", { scope: "/" })
+          .then(function (registration) {
+            console.log("Service worker registered: ", registration.scope);
+          })
+          .catch(function (error) {
+            console.log("Service worker registration failed: ", error);
+          });
+      });
     }
+
+    // Update the online status icon based on the network state
+    function updateStatus() {
+      if (navigator.onLine) {
+        document.getElementById("status").innerHTML = "En ligne";
+      } else {
+        document.getElementById("status").innerHTML = "Hors ligne";
+      }
+    }
+
+    window.addEventListener("online", updateStatus);
+    window.addEventListener("offline", updateStatus);
+
+    updateStatus();
   </script>
 </html>

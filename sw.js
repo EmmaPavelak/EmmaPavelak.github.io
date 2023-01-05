@@ -6,7 +6,7 @@ self.addEventListener('install', event => {
     const cache = await caches.open(CACHE_NAME);
     caches.open("pwa-assets")
     .then(cache => {
-      cache.addAll(['/',"styles.css", "icon512.png.png"]); 
+      cache.addAll(["/","styles.css", "icon512.png"]); 
     });
   })());
 
